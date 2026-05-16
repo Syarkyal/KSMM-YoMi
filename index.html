@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoKyalsin | Official Creative Space</title>
+    <style>
+        /* --- Base & Reset Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Pyidaungsu', 'Myanmar Text';
+            background-color: #f5f6fa;
+            color: #2f3640;
+            line-height: 1.8;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Navigation Bar --- */
+        nav {
+            background-color: #1e272e;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: #f1c40f;
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ffffff;
+            font-weight: 300;
+        }
+
+        /* --- Header / Hero Section --- */
+        header {
+            background: linear-gradient(135deg, #1e272e 0%, #34495e 100%);
+            color: #ffffff;
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 5px solid #f1c40f;
+        }
+
+        header h1 {
+            font-size: 46px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+
+        header p {
+            font-size: 18px;
+            color: #dcdde1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Main Layout Grid --- */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- Content Tabs Navigation --- */
+        .tabs-menu {
+            display: flex;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            gap: 10px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #7f8c8d;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            background-color: #f8f9fa;
+            color: #1e272e;
+        }
+
+        .tab-btn.active {
+            background-color: #f1c40f;
+            color: #1e272e;
+        }
+
+        /* --- Cards & Content Content --- */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #1e272e;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-left: 5px solid #f1c40f;
+            padding-left: 12px;
+        }
+
+        .post-item {
+            border-bottom: 1px solid #f1f2f6;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .post-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .post-title {
+            color: #2c3e50;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .badge {
+            background-color: #e74c3c;
+            color: #ffffff;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .badge.history { background-color: #27ae60; }
+        .badge.lyrics { background-color: #9b59b6; }
+        .badge.sports { background-color: #2980b9; }
+
+        /* --- Sidebar Panels --- */
+        .sidebar-panel {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .sidebar-panel ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .sidebar-panel li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f2f6;
+            font-size: 15px;
+            color: #57606f;
+        }
+
+        .sidebar-panel li:last-child {
+            border-bottom: none;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1e272e;
+            color: #a4b0be;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 4px solid #f1c40f;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">BoKyalsin<span>.space</span></a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>BoKyalsin ရဲ့ စိတ်ကူးယဉ်အနုပညာကမ္ဘာ</h1>
+            <p>စာပေအရေးအသား၊ သမိုင်းဝင်အကြောင်းအရာများနှင့် ကိုယ်ပိုင်ဖန်တီးမှုများကို စိတ်ကြိုက်ထိန်းချုပ်ရာ ကိုယ်ပိုင်အာကာသ</p>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="container main-layout">
+        
+        <!-- Left Content Area -->
+        <main>
+            <!-- Tabs Menu -->
+            <div class="tabs-menu">
+                <button class="tab-btn active" onclick="openTab(event, 'novels')">ဝတ္ထု/စာပေ</button>
+                <button class="tab-btn" onclick="openTab(event, 'lyrics')">တေးကဗျာ/Lyrics</button>
+                <button class="tab-btn" onclick="openTab(event, 'history')">သမိုင်းကြောင်း</button>
+                <button class="tab-btn" onclick="openTab(event, 'sports')">အားကစားဆောင်းပါး</button>
+            </div>
+
+            <!-- Tab 1: Novels -->
+            <div id="novels" class="tab-content active">
+                <div class="card">
+                    <h2>စုံထောက်နှင့် သည်းထိတ်ရင်ဖို ဝတ္ထုရှည်များ</h2>
+                    <div class="post-item">
+                        <span class="badge">၁၉၄၀ ကာလနောက်ခံ</span>
+                        <h3 class="post-title">မြိတ်ကျွန်းစုမှ ဆန်းကြယ်သောအမှုအခင်း</h3>
+                        <p>၁၉၄၀ ပြည့်လွန်နှစ်များ၏ ကိုလိုနီခေတ် မြိတ်ကျွန်းစုကို နောက်ခံထား၍ အိုင်အက်စ်ပီ ဗိုလ်ကြယ်နှင့် ဒေါက်တာဖြိုးထွန်းတို့၏ နက်နဲဆန်းကြယ်သော အမှုအခင်းများကို ဖော်ထုတ်ပုံဖော်ထားသည့် သည်းထိတ်ရင်ဖို စုံထောက်ဇာတ်လမ်းတွဲများ။</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Lyrics -->
+            <div id="lyrics" class="tab-content">
+                <div class="card">
+                    <h2>တေးကဗျာများနှင့် Lyrics စုစည်းမှု</h2>
+                    <div class="post-item">
+                        <span class="badge lyrics">Pop Genre</span>
+                        <h3 class="post-title">လွမ်းမောဖွယ် ခံစားချက်ပြန်ဆိုတေးများ</h3>
+                        <p>အချစ်ဦး ဆုံးရှုံးရခြင်း၊ နှလုံးသားကြေကွဲမှု၊ သစ္စာဖောက်ဖျက်ခြင်းနှင့် လွမ်းမောဖွယ် အချစ်အကြောင်း ခံစားချက်တို့ကို ပေါ်လွင်စေမည့် ကိုယ်ပိုင်စာသားများနှင့် တေးကဗျာစုစည်းမှုများ။</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: History -->
+            <div id="history" class="tab-content">
+                <div class="card">
+                    <h2>သမိုင်းဝင် လေ့လာချက်ဆောင်းပါးများ</h2>
+                    <div class="post-item">
+                        <span class="badge history">ကုန်းဘောင်ခေတ်</span>
+                        <h3 class="post-title">ထင်ရှားကျော်ကြားခဲ့သော သမိုင်းဝင်ပုဂ္ဂိုလ်များ</h3>
+                        <p>နတ်သျှင်နောင် အပါအဝင် မြန်မာ့သမိုင်းတစ်လျှောက် ထင်ရှားကျော်ကြားခဲ့သော ပုဂ္ဂိုလ်များ၏ ဘဝကဏ္ဍများနှင့် ကုန်းဘောင်ခေတ် ယဉ်ကျေးမှု၊ အနုပညာရပ်များအပေါ် လေ့လာသုံးသပ်ချက်များ။</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Sports -->
+            <div id="sports" class="tab-content">
+                <div class="card">
+                    <h2>အားကစားနှင့် ဘောလုံးလောက သုံးသပ်ချက်များ</h2>
+                    <div class="post-item">
+                        <span class="badge sports">Football</span>
+                        <h3 class="post-title">စီရော်နယ်ဒို နှင့် လီယွန်နယ်မက်ဆီ နှိုင်းယှဉ်ချက်</h3>
+                        <p>ခေတ်သစ်ဘောလုံးလောက၏ ဂန္ထဝင်များဖြစ်ကြသည့် စီရော်နယ်ဒို (Cristiano Ronaldo) နှင့် လီယွန်နယ်မက်ဆီ (Lionel Messi) တို့၏ ကစားသမားဘဝ ဖြတ်သန်းမှု၊ အောင်မြင်မှုများနှင့် စွမ်းဆောင်ရည် နှိုင်းယှဉ်ချက် ဆောင်းပါးများ။</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar Area -->
+        <aside>
+            <!-- Profile Panel -->
+            <div class="sidebar-panel">
+                <h2>ကျွန်ုပ်အကြောင်း</h2>
+                <p>ကျွန်တော်ကတော့ အနုပညာဖန်တီးမှုတွေကို မြတ်နိုးပြီး စာပေ၊ သမိုင်းနဲ့ ခေတ်မီနည်းပညာတွေကို စိတ်ဝင်စားသူတစ်ယောက် ဖြစ်ပါတယ်။ စိတ်ကူးစိတ်သန်းတွေကို စာသားတွေအဖြစ် ပုံဖော်ရတာကို ဝါသနာပါပါတယ်။</p>
+            </div>
+
+            <!-- Gaming Panel -->
+            <div class="sidebar-panel">
+                <h2>နည်းပညာနှင့် ဂိမ်းကဏ္ဍ</h2>
+                <p>မိုဘိုင်းလ်ဂိမ်းများ အကောင်းဆုံး ကစားနိုင်ရန်အတွက် လိုအပ်သော Device Specifications များနှင့် Hardware စွမ်းဆောင်ရည်ပိုင်းဆိုင်ရာ လေ့လာသုံးသပ်ချက်များ။</p>
+                <ul>
+                    <li>✓ Mobile Gaming Specs</li>
+                    <li>✓ Hardware Performance Reviews</li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BoKyalsin. All Rights Reserved. ဖန်တီးမှုအားလုံးကို စိတ်ကြိုက်ထိန်းချုပ်ခွင့်ရှိသည်။</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript to Handle Tabs -->
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            // Hide all tab contents
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+            }
+            
+            // Remove active class from all buttons
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).className += " active";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+</body>
+</html>
